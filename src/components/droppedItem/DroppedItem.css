@@ -1,0 +1,16 @@
+.droppedItem {
+  position: absolute;
+  display: inline;
+  padding: 0.3rem;
+  transform: translate(-50%, -50%);
+  outline: none;
+}
+.droppedItem input,
+.droppedItem button,
+.droppedItem p {
+  outline: none;
+  display: inline;
+}
+.borderRed {
+  border: 1px solid red;
+}

@@ -1,0 +1,28 @@
+.modal_shadow {
+  width: 100vw;
+  height: 100vh;
+  z-index: 102;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.modal {
+  animation: closeup 300ms ease-in-out;
+  transform-origin: center;
+}
+@keyframes closeup {
+  from {
+    transform: scale(0);
+    opacity: 0;
+    z-index: -1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 102;
+  }
+}

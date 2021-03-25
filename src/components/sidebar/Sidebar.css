@@ -1,0 +1,12 @@
+.sidebar {
+  flex: 0.264;
+  background: #2d2d2d;
+  color: #ffffff;
+  padding: 1rem 1.2rem;
+  z-index: 100;
+}
+.sidebar h4 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
