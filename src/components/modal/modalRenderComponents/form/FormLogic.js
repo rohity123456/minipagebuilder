@@ -4,6 +4,17 @@ import { actionTypes } from "../../../../context/reducer";
 import { useStateValue } from "../../../../context/StateProvider";
 
 function FormLogic() {
+  const [{ currentElement, elementList }, dispatch] = useStateValue();
+  const { pageX, pageY, type, id } = currentElement || {};
+  const [inputState, setInputState] = useState({
+    X: pageX || 0,
+    Y: pageY || 0,
+    type: type,
+    id: id,
+    fontWeight: "",
+    fontSize: "",
+    text: "",
+  });
   useEffect(() => {
     if (id) {
       const element = getElementFromList(elementList, id);
@@ -20,9 +31,7 @@ function FormLogic() {
         });
       }
     }
-  }, []);
-  const [{ currentElement, elementList }, dispatch] = useStateValue();
-  const { pageX, pageY, type, id } = currentElement || {};
+  }, [id, elementList, inputState]);
   const addNewElement = (e) => {
     e.preventDefault();
     //will do validation of values later
@@ -47,15 +56,6 @@ function FormLogic() {
     if (input && input.trim() && e.target.name)
       setInputState({ ...inputState, [e.target.name]: input });
   };
-  const [inputState, setInputState] = useState({
-    X: pageX || 0,
-    Y: pageY || 0,
-    type: type,
-    id: id,
-    fontWeight: "",
-    fontSize: "",
-    text: "",
-  });
   return {
     addNewElement,
     inputState,

@@ -21,7 +21,7 @@ function DroppedItem({
   return (
     <div
       className="droppedItem draggable"
-      style={{ left: +left, top: +top }}
+      style={{ left: +left || 100, top: +top || 100 }}
       id={id}
       draggable={true}
       onDragStart={dragStart}
