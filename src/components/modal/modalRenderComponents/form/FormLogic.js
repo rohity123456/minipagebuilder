@@ -19,19 +19,19 @@ function FormLogic() {
     if (id) {
       const element = getElementFromList(elementList, id);
       if (element && element.data.text) {
-        const { type, text, left, top, fontWeight, fontSize } = element.data;
+        const { type, text, X, Y, fontWeight, fontSize } = element.data;
         setInputState({
           ...inputState,
           text,
           type,
           fontWeight,
           fontSize,
-          X: left,
-          Y: top,
+          X,
+          Y,
         });
       }
     }
-  }, [id, elementList, inputState]);
+  }, []);
   const addNewElement = (e) => {
     e.preventDefault();
     //will do validation of values later
