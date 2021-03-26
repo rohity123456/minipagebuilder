@@ -51,7 +51,6 @@ function FormLogic() {
     }, 100);
   };
   const handleChange = (e) => {
-    console.log(inputState.text);
     const input = e.target.value;
     if (input && input.trim() && e.target.name)
       setInputState({ ...inputState, [e.target.name]: input });

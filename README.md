@@ -11,7 +11,7 @@ In the project directory
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-- ### `Demo Link` - [will update soon]()
+- ### `Demo Link` - [Mini Page Builder](https://minipagebuilder.netlify.app/)
 
 ### How its working -
 

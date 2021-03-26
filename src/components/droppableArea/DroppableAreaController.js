@@ -10,7 +10,6 @@ function DroppableAreaController() {
   };
 
   const drop = (e) => {
-    // console.log("Drop");
     if (e.dataTransfer.types[0] === "text/plain/type") {
       const type = e.dataTransfer.getData("text/plain/type");
       dispatch({
