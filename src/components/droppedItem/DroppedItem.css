@@ -4,6 +4,7 @@
   padding: 0.3rem;
   transform: translate(-50%, -50%);
   outline: none;
+  transition: left 400ms ease-in-out, top 400ms ease-in-out;
 }
 .droppedItem input,
 .droppedItem button,

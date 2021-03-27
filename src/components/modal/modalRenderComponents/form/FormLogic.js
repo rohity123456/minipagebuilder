@@ -1,37 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getElementFromList } from "../../../../common/helperfunctions";
 import { actionTypes } from "../../../../context/reducer";
 import { useStateValue } from "../../../../context/StateProvider";
 
 function FormLogic() {
+  let initialState;
   const [{ currentElement, elementList }, dispatch] = useStateValue();
-  const { pageX, pageY, type, id } = currentElement || {};
-  const [inputState, setInputState] = useState({
-    X: pageX || 0,
-    Y: pageY || 0,
-    type: type,
-    id: id,
-    fontWeight: "",
-    fontSize: "",
-    text: "",
-  });
-  useEffect(() => {
-    if (id) {
-      const element = getElementFromList(elementList, id);
-      if (element && element.data.text) {
-        const { type, text, X, Y, fontWeight, fontSize } = element.data;
-        setInputState({
-          ...inputState,
-          text,
-          type,
-          fontWeight,
-          fontSize,
-          X,
-          Y,
-        });
-      }
-    }
-  }, []);
+  const { id } = currentElement || {};
+  if (id) {
+    const element = getElementFromList(elementList, id);
+    initialState = { ...element.data };
+  } else {
+    const { pageX, pageY, type, id } = currentElement || {};
+    initialState = {
+      X: pageX || 0,
+      Y: pageY || 0,
+      type: type,
+      id: id,
+      fontWeight: "",
+      fontSize: "",
+      text: "",
+    };
+  }
+  const [inputState, setInputState] = useState(initialState);
+  const { type } = initialState;
   const addNewElement = (e) => {
     e.preventDefault();
     //will do validation of values later

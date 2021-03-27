@@ -12,15 +12,16 @@ function DroppedItem({
   fontWeight,
   fontSize,
 }) {
-  const { handleClick, handleKeyPress, element } = DroppedItemLogic(
-    type,
-    text,
-    { fontWeight, fontSize }
-  );
+  const {
+    handleClick,
+    handleKeyPress,
+    element,
+    isClicked,
+  } = DroppedItemLogic(type, text, { fontWeight, fontSize });
 
   return (
     <div
-      className="droppedItem draggable"
+      className={`droppedItem draggable ${isClicked ? "borderRed" : ""}`}
       style={{ left: +left || 100, top: +top || 100 }}
       id={id}
       draggable={true}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { VALID_TYPES } from "../../common/constants";
-import { getEl, getElementFromList } from "../../common/helperfunctions";
+import { getElementFromList } from "../../common/helperfunctions";
 import { actionTypes } from "../../context/reducer";
 import { useStateValue } from "../../context/StateProvider";
 
@@ -26,25 +26,18 @@ function DroppedItemLogic(type, text, style = {}) {
       element = <p>{text}</p>;
     }
   }
+
   const handleClick = (e) => {
-    const lastSelectedElement = getEl(
-      e.currentTarget.parentElement,
-      ".droppedItem.borderRed"
-    );
-    if (lastSelectedElement && e.currentTarget.id !== lastSelectedElement.id)
-      lastSelectedElement.classList.remove("borderRed");
-    e.currentTarget.classList.toggle("borderRed");
     setIsClicked(!isClicked);
   };
   const handleKeyPress = (e) => {
+    let action;
     const id = e.currentTarget.id;
-    e.currentTarget.classList.remove("borderRed");
     if (e.key === "Enter" && isClicked) {
       const {
         data: { X, Y, type },
       } = getElementFromList(elementList, id) || {};
-      setIsClicked(false);
-      dispatch({
+      action = {
         type: actionTypes.SET_CURRENT_ELEMENT,
         payload: {
           pageX: X,
@@ -52,17 +45,19 @@ function DroppedItemLogic(type, text, style = {}) {
           type,
           id,
         },
-      });
+      };
       setTimeout(
         () => dispatch({ type: actionTypes.SET_MODAL_OPEN, payload: true }),
-        100
+        0
       );
     } else if (e.key === "Delete" && isClicked) {
-      dispatch({ type: actionTypes.DELETE_ELEMENT_FROM_LIST, payload: id });
+      action = { type: actionTypes.DELETE_ELEMENT_FROM_LIST, payload: id };
     }
+    action && dispatch(action);
+    setTimeout(() => setIsClicked(false), 0);
     e.stopPropagation();
   };
-  return { handleClick, handleKeyPress, element };
+  return { handleClick, handleKeyPress, element, isClicked };
 }
 
 export default DroppedItemLogic;
