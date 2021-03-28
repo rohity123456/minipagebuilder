@@ -1,7 +1,7 @@
 ### Follow below guide to run this project on your local machine :
 
 In the project directory
-`\dragandmove`, you can run:
+`\minipagebuilder`, you can run:
 
 - ### `npm install` : To install all dependencies.
 

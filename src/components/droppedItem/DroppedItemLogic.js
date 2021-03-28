@@ -3,6 +3,7 @@ import { VALID_TYPES } from "../../common/constants";
 import { getElementFromList } from "../../common/helperfunctions";
 import { actionTypes } from "../../context/reducer";
 import { useStateValue } from "../../context/StateProvider";
+import { removeBorderFromLastSelectedEL } from "./DroppedItemController";
 
 function DroppedItemLogic(type, text, style = {}) {
   const [{ elementList }, dispatch] = useStateValue();
@@ -28,6 +29,7 @@ function DroppedItemLogic(type, text, style = {}) {
   }
 
   const handleClick = (e) => {
+    removeBorderFromLastSelectedEL(e);
     setIsClicked(!isClicked);
   };
   const handleKeyPress = (e) => {
