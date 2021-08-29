@@ -1,0 +1,19 @@
+.excel-export {
+  outline: none;
+}
+.excel-export .iconPlaceholer-icon {
+  margin-right: 0;
+}
+
+.excel-export .export-button {
+  color: #ff5e00;
+  font-family: Gilroy-Semibold, sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  height: 16px;
+  letter-spacing: 0px;
+  padding-left: 5px;
+  margin-top: 2px;
+  outline: none;
+}

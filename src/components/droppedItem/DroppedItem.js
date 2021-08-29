@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DroppedItem.css";
 import DroppedItemLogic from "./DroppedItemLogic";
 function DroppedItem({
@@ -18,6 +18,13 @@ function DroppedItem({
     element,
     isClicked,
   } = DroppedItemLogic(type, text, { fontWeight, fontSize });
+
+  useEffect(() => {
+    
+    return () => {
+      alert("DELETING IT");
+    }
+  }, []) 
 
   return (
     <div
